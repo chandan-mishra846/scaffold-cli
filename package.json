@@ -1,0 +1,25 @@
+{
+  "name": "create-project-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool to quickly scaffold new project structures with best practices",
+  "main": "index.js",
+  "bin": {
+    "create-proj": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "cli",
+    "scaffold",
+    "project",
+    "generator",
+    "boilerplate"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
