@@ -1,182 +1,68 @@
 # create-project-cli
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](https://nodejs.org/)
+A CLI tool to quickly scaffold new projects with predefined templates. Save 10+ minutes on every project setup!
 
-A lightweight CLI tool that automates project scaffolding. Create complete project structures with predefined templates in seconds.
+## Why This Tool?
 
-## Problem Statement
-
-Every time I start a new project for practice or assignments, I spend 10-15 minutes on repetitive setup tasks:
-- Creating the same folder structure (`src/`, `utils/`, `tests/`)
-- Writing boilerplate files (README.md, .gitignore, package.json)
-- Setting up Git repositories
-- Writing initial configuration code
-
-This tool eliminates that overhead, letting me focus on actual development instead of project setup.
+Stop wasting time creating the same folders and files for every new project. This tool automates project setup so you can start coding immediately.
 
 ## Features
 
-- **Zero Dependencies** - Uses only Node.js standard libraries (fs, path, child_process)
-- **Multiple Templates** - Web, API, CLI, and basic project structures
-- **Git Integration** - Optional automatic repository initialization
-- **Smart Validation** - Prevents invalid project names and duplicates
-- **Cross-Platform** - Works on Windows, macOS, and Linux
-- **Fully Tested** - Comprehensive test suite included
+- 🚀 **Zero Dependencies** - Uses only Node.js built-in modules
+- 📦 **5 Templates** - Basic, Web, API, CLI, and Fullstack
+- 🔧 **Git Ready** - Optional Git initialization
+- ✅ **Smart Validation** - No duplicate or invalid project names
 
 ## Installation
 
-**Prerequisites:**
-- Node.js 14.0.0 or higher
-- Git (optional, for `--git` flag)
-
-**Setup:**
 ```bash
-git clone <your-repo-url>
-cd create-project-cli
+git clone https://github.com/chandan-mishra846/scaffold-cli.git
+cd scaffold-cli
 ```
 
-No additional dependencies to install. The tool uses only Node.js built-in modules.
+**Requirements:** Node.js 14.0.0+
 
-## Usage
-
-### Basic Command
+## Quick Start
 
 ```bash
-node index.js <project-name> [options]
-```
+# Basic project
+node index.js my-project
 
-### Options
+# Web project with Git
+node index.js my-website -t web -g
 
-| Option | Shorthand | Description | Default |
-|--------|-----------|-------------|---------|
-| `--template <type>` | `-t` | Project template (web, api, cli, basic) | basic |
-| `--git` | `-g` | Initialize Git repository | false |
-| `--author <name>` | `-a` | Author name for package.json | - |
-| `--help` | `-h` | Display help information | - |
-
-### Examples
-
-```bash
-# Create a basic project
-node index.js my-app
-
-# Create a web project with Git initialization
-node index.js my-website --template web --git
-
-# Create an API with author information
+# API with author name
 node index.js my-api -t api -a "Your Name"
 
-# Show help
-node index.js --help
+# Fullstack project
+node index.js my-fullstack -t fullstack
 ```
 
-## Available Templates
+## Commands
 
-### 1. Basic Template
-General-purpose project structure for algorithms, practice code, and simple applications.
+| Command | Description |
+|---------|-------------|
+| `node index.js <name>` | Create basic project |
+| `-t, --template <type>` | Choose template: basic, web, api, cli, fullstack |
+| `-g, --git` | Initialize Git repository |
+| `-a, --author <name>` | Set author name |
+| `-h, --help` | Show help |
 
-```
-my-app/
-├── src/
-│   └── index.js
-├── utils/
-├── tests/
-├── package.json
-├── .gitignore
-└── README.md
-```
+## Templates
 
-### 2. Web Template
-Complete web application with HTML, CSS, and JavaScript.
+**Basic** - Simple structure with src/, utils/, tests/  
+**Web** - HTML/CSS/JS with organized folders  
+**API** - REST API with routes and controllers  
+**CLI** - Command-line tool structure  
+**Fullstack** - Complete frontend + backend setup
 
-```
-my-website/
-├── src/
-│   ├── index.html
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── app.js
-├── public/
-├── assets/
-├── package.json
-└── README.md
-```
-
-### 3. API Template
-REST API server structure with routes and controllers.
-
-```
-my-api/
-├── src/
-│   ├── server.js
-│   ├── routes/
-│   │   └── index.js
-│   └── controllers/
-│       └── index.js
-├── config/
-├── utils/
-└── package.json
-```
-
-### 4. CLI Template
-Command-line tool structure with proper organization.
-
-```
-my-tool/
-├── src/
-│   └── cli.js
-├── commands/
-│   └── index.js
-├── utils/
-└── package.json
-```
-
-## Design Decisions
-
-### 1. Zero External Dependencies
-The tool uses only Node.js standard libraries (fs, path, child_process) to ensure it works immediately without running `npm install`. This approach provides:
-- Instant usability on any system with Node.js
-- No dependency conflicts or security vulnerabilities
-- Faster execution with smaller footprint
-
-### 2. Modular Architecture
-The codebase is organized into three focused modules:
-- **argumentParser.js** - Handles command-line argument parsing and validation
-- **templateGenerator.js** - Manages template creation and file generation
-- **logger.js** - Provides colored console output for better UX
-
-This separation makes the code easier to understand, test, and extend with new features.
-
-### 3. Comprehensive Error Handling
-The tool validates all inputs and handles edge cases gracefully:
-- Invalid project names (special characters, reserved words)
-- Duplicate project directories
-- Git initialization failures
-- Missing required arguments
-
-Users receive clear, actionable error messages instead of crashes or stack traces.
-
-### 4. Template-Based Approach
-Different project types require different structures. Rather than a one-size-fits-all solution, the tool provides specialized templates that generate appropriate files and folders for each use case (web apps need HTML/CSS/JS, APIs need routes/controllers, etc.).
-
-### 5. Git Integration
-Version control is essential for most projects. The optional `--git` flag automatically initializes a repository and creates an initial commit, saving developers several manual steps.
-
-### 6. Cross-Platform Compatibility
-Using `path.join()` for file paths and checking for Git availability ensures the tool works consistently across Windows, macOS, and Linux environments.
-
-## Sample Output
-
-### Successful Project Creation
+## Example Output
 
 ```bash
-$ node index.js portfolio --template web --git
+$ node index.js portfolio -t web -g
 
 Creating web project: portfolio...
 ✓ Project structure created
-Initializing Git repository...
 ✓ Git repository initialized
 
 ✓ Project "portfolio" created successfully!
@@ -187,98 +73,29 @@ Next steps:
   npm start
 ```
 
-### Error Handling
-
-```bash
-# Invalid project name
-$ node index.js "my@project!"
-✗ Error: Project name can only contain letters, numbers, hyphens, and underscores
-
-# Duplicate project
-$ node index.js portfolio --template web
-✗ Error: Directory "portfolio" already exists. Please choose a different name.
-```
-
 ## Testing
 
-The project includes a comprehensive test suite covering all major functionality.
-
-**Run tests:**
 ```bash
-node test.js
+npm test
 ```
-
-**Test coverage:**
-- Template creation for all types (basic, web, api, cli)
-- Invalid project name validation
-- Duplicate project detection
-- Help command functionality
-
-All tests pass successfully with clear output showing results for each test case.
 
 ## Project Structure
 
 ```
 create-project-cli/
-├── index.js                      # Main CLI entry point
+├── index.js                    # Main CLI
 ├── utils/
-│   ├── argumentParser.js         # Command-line argument parser
-│   ├── templateGenerator.js      # Project template generator
-│   └── logger.js                 # Colored console output
-├── test.js                       # Automated test suite
-├── package.json                  # Project metadata
-├── .gitignore
-└── README.md
+│   ├── argumentParser.js       # Parse commands
+│   ├── templateGenerator.js    # Generate templates
+│   └── logger.js               # Console output
+├── test.js                     # Tests
+└── package.json
 ```
-
-## Assignment Requirements
-
-This project fulfills the following requirements:
-
-**1. Source Code**
-- Complete implementation available in this repository
-- Modular architecture with clear separation of concerns
-- Approximately 1,000 lines of well-documented code
-
-**2. README Documentation**
-- **Problem Description:** Detailed in the [Problem Statement](#problem-statement) section
-- **How to Run:** Complete instructions in [Installation](#installation) and [Usage](#usage)
-- **Design Decisions:** Six key decisions explained in [Design Decisions](#design-decisions)
-
-**3. Sample Output**
-- Terminal examples provided in [Sample Output](#sample-output)
-- Error handling demonstrations included
-
-**4. Video Demonstration**
-- YouTube link: [To be added]
-- Duration: 4-5 minutes
-- Content: Problem statement, program demonstration, design choices
-
-**5. Technical Guidelines**
-- ✓ Uses standard libraries only (fs, path, child_process)
-- ✓ No external dependencies required
-- ✓ Original implementation demonstrating understanding of concepts
-
-## Future Enhancements
-
-Potential improvements for future versions:
-- Interactive mode with prompts for configuration
-- User-defined custom templates
-- Configuration file for saved preferences
-- Support for popular frameworks (React, Vue, Angular)
-- Automatic dependency installation
-- Template marketplace for community sharing
 
 ## License
 
-MIT License - See [LICENSE](LICENSE) file for details.
+MIT License
 
 ## Author
 
-Mishra | January 2026
-
-Built as part of an internship assignment to demonstrate problem-solving skills and clean code practices.
-
----
-
-**Note:** This tool is designed to save time on repetitive project setup tasks. Feel free to use, modify, and distribute according to the MIT License.
+Mishra | 2026
