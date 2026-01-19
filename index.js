@@ -1,14 +1,3 @@
-#!/usr/bin/env node
-
-/**
- * create-project-cli
- * A CLI tool to scaffold new projects with pre-configured folder structures
- * 
- * Problem: Developers waste time creating repetitive folder structures, 
- * config files, and boilerplate code for every new project.
- * 
- * Solution: Automate project initialization with customizable templates.
- */
 
 const fs = require('fs');
 const path = require('path');
@@ -24,9 +13,7 @@ class ProjectCLI {
     this.generator = new TemplateGenerator();
   }
 
-  /**
-   * Main entry point for the CLI
-   */
+  
   run() {
     try {
       const args = process.argv.slice(2);
